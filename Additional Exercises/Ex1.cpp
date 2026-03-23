@@ -1,39 +1,23 @@
 #include <iostream>
-using namespace std;
-class Shape{
-    public:
-    virtual void area(){
-        cout << "defualt area\n"; 
-    }
-};
-class Circle:public Shape{
-    private:
-    int radius;
-    public:
-    Circle(int r):radius(r){}
-    void area() override{
-        cout << "circle area " << 3.142*radius*radius<< endl;
-    }
-};
-class Rectangle:public Shape{
-    private:
-    int x;
-    int y;
-    public:
-    Rectangle(int x,int y):x(x),y(y){}
-    void area() override{
-        cout << "Rectangle area " << x*y << endl;
-    }
-};
+using  namespace std;
 
-
+class Profile{
+    private:
+    string name;
+    int age;
+    string status;
+    public:
+    Profile(string name,int age,string status):name(name),age(age),status(status){}
+    friend ostream& operator<<(ostream &out,const Profile& obj);
+};
+ostream& operator<<(ostream &out,const Profile& obj){
+        out << "Profile details" << endl;
+        out << "Name :" << obj.name << endl;
+        out << "Age :" << obj.age << endl;
+        out << "Status :" << obj.status << endl;
+        return out;
+}
 int main(){
-    Shape *s;
-    Circle c(5);
-    s=&c;
-    s->area();
-    Rectangle r(2,3);
-    s = &r;
-    s->area();
-    return 0;
+    Profile p("Abdullah",19,"student");
+    cout << p ;
 }
