@@ -1,46 +1,26 @@
+// Create a class Calculator that overloads a function multiply() to perform:
+
+// Multiplication of two integers
+// Multiplication of three integers
+// Multiplication of two floating values
 #include <iostream>
 using namespace std;
-
-class Vehicle {
-public:
-	virtual void startEngine() {
-		cout << "Vehicle engine started." << endl;
-	}
-
-	virtual ~Vehicle() {}
+class Calculator{
+    public:
+    void Multiply(int a,int b){
+        cout << "Multiplication:" << a*b << endl;
+    }
+     void Multiply(int a,int b,int c){
+        cout << "Multiplication:" << a*b*c << endl;
+    }
+     void Multiply(float a,float b){
+        cout << "Multiplication:" << a*b << endl;
+    }
 };
-
-class Car : public Vehicle {
-public:
-	void startEngine() override {
-		cout << "Car engine started with key ignition." << endl;
-	}
-};
-
-class Bike : public Vehicle {
-public:
-	void startEngine() override {
-		cout << "Bike engine started with self-start button." << endl;
-	}
-};
-
-class Truck : public Vehicle {
-public:
-	void startEngine() override {
-		cout << "Truck engine started with heavy-duty ignition." << endl;
-	}
-};
-
-int main() {
-	Car car;
-	Bike bike;
-	Truck truck;
-
-	Vehicle* vehicles[3] = {&car, &bike, &truck};
-
-	for (int i = 0; i < 3; i++) {
-		vehicles[i]->startEngine();
-	}
-
-	return 0;
+int main(){
+    Calculator c;
+    c.Multiply(4,5);
+    c.Multiply(4,5,6);
+    c.Multiply(3.2f,5.5f);
+    return 0;
 }
